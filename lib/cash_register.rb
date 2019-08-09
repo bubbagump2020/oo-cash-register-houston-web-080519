@@ -7,7 +7,6 @@ class CashRegister
     @total = 0
     @discount = discount
     @cart = []
-    @item_price = []
   end
   
   def add_item(item, price, quantity = 0)
@@ -25,7 +24,6 @@ class CashRegister
       self.total = self.total + price
       while self.cart.length <= quantity do
         self.cart.push(item)
-        self.item_price.push(price)
       end
     end
   end
@@ -36,7 +34,7 @@ class CashRegister
     else
       discount = (self.discount * 0.01)
       discount_total = self.total * discount
-      self.total = self.total - discount_total
+      self.total -= discount_total
       return "After the discount, the total comes to $#{self.total.round}."
     end
     return self.total
